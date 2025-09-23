@@ -1,0 +1,200 @@
+/* Updated: 2025-09-23T17:35:14.071Z */
+/* Updated: 2025-09-23T05:44:59.481Z */
+/* Updated: 2025-09-19T06:48:37.156Z */
+/* Updated: 2025-09-19T06:48:33.485Z */
+/* Updated: 2025-09-19 */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Semantic tokens mapped to CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-outfit);
+}
+
+:root {
+  /* Base scales */
+  --radius: 10px;
+  --font-outfit: "Outfit", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* Light (kept for completeness, app uses dark) */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0 / 0.8);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0 / 0.8);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.35 0.06 260);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.95 0 0 / 0.6);
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.2 0 0);
+  --destructive: oklch(0.62 0.25 25);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.7 0 0);
+
+  /* Aquasphere brand tokens */
+  --navy: oklch(0.3 0.05 260); /* royal navy blue */
+  --navy-700: oklch(0.26 0.05 260);
+  --navy-900: oklch(0.2 0.04 260);
+  --neo-aqua: oklch(0.82 0.16 210); /* neon aqua glow */
+  --neo-blue: oklch(0.78 0.18 260);
+  --glass: oklch(1 0 0 / 0.08);
+  --glass-strong: oklch(1 0 0 / 0.14);
+  --shadow-glow: 0 0 20px oklch(0.82 0.16 210 / 0.6), 0 0 40px oklch(0.78 0.18 260 / 0.35);
+
+  /* Charts (unused but reserved) */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+}
+
+.dark {
+  --background: var(--navy-900);
+  --foreground: oklch(0 0 0); /* Force pure black text globally in dark theme */
+  --card: oklch(0.22 0.03 260 / 0.7);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(0.22 0.03 260 / 0.7);
+  --popover-foreground: oklch(0 0 0);
+  --primary: var(--neo-aqua);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.3 0.02 260 / 0.6);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.28 0.02 260);
+  --muted-foreground: oklch(0 0 0);
+  --accent: var(--navy);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.7 0.18 25);
+  --border: oklch(1 0 0 / 0.12);
+  --input: oklch(1 0 0 / 0.16);
+  --ring: var(--neo-blue);
+}
+
+@layer base {
+  html { color-scheme: dark; }
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-outfit);
+    /* Water gradient background */
+    background-image:
+      radial-gradient(600px 300px at 10% 0%, oklch(0.28 0.03 240 / 0.25), transparent),
+      radial-gradient(500px 300px at 90% 10%, oklch(0.3 0.05 260 / 0.25), transparent),
+      radial-gradient(700px 400px at 50% 100%, oklch(0.32 0.06 220 / 0.2), transparent);
+    background-attachment: fixed;
+    /* Liquid motion */
+    background-size: 180% 180%, 200% 200%, 220% 220%;
+    background-position: 0% 0%, 100% 0%, 50% 100%;
+    animation: liquidFlow 12s ease-in-out infinite alternate;
+  }
+
+  /* Enforce black text across all elements in dark theme */
+  .dark :where(h1,h2,h3,h4,h5,h6,p,li,span,a,button,small,blockquote,label,dt,dd,strong,em,code,figcaption,time) {
+    color: #000 !important;
+  }
+
+  /* Glass morph surfaces */
+  .glass {
+    background: linear-gradient( to bottom right, var(--glass), var(--glass-strong) );
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    box-shadow: 0 1px 0 oklch(1 0 0 / 0.08) inset, 0 20px 60px oklch(0 0 0 / 0.35);
+  }
+
+  /* Neon glow utility */
+  .neon {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* 3D card hover */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+    border: 1px solid var(--border);
+    background: linear-gradient(160deg, oklch(0.18 0.02 260 / 0.8), oklch(0.16 0.02 260 / 0.6));
+  }
+  .card-3d:hover {
+    transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: 0 10px 30px oklch(0 0 0 / 0.5), var(--shadow-glow);
+    border-color: var(--neo-aqua);
+  }
+
+  /* Ripple hover (approximate) */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple::after {
+    content: "";
+    position: absolute;
+    inset: -120% -120%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), oklch(0.82 0.16 210 / 0.35), transparent 40%);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
+  .ripple:hover::after { opacity: 1; }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 { letter-spacing: 0.02em; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    body { animation: none; }
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
+
+/* Liquid background keyframes */
+@keyframes liquidFlow {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%;
+  }
+  50% {
+    background-position: 60% 40%, 40% 60%, 35% 65%;
+  }
+  100% {
+    background-position: 100% 50%, 0% 50%, 50% 0%;
+  }
+}
